@@ -27,11 +27,52 @@
           <tr>
             <th>No</th>
             <th>Name Bank</th>
+            <th>Gambar</th>
             <th>Nomor Rekening</th>
             <th>Nama Pemilik</th>
             <th>Option</th>
           </tr>
         </thead>
+        <tbody>
+          <% for( let index = 0; index < bank.length; index++ ) { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= bank[index].nameBank %></td>
+            <td class="text-center">
+              <img
+                src="http://localhost:3000/<%= bank[index].imageUrl %>"
+                alt="imageUrl"
+                width="50px"
+                height="50px"
+              />
+            </td>
+            <td><%= bank[index].nomorRekening %></td>
+            <td><%= bank[index].name %></td>
+            <td>
+              <form
+                action="/admin/bank/<%= bank[index].id %>?_method=DELETE"
+                method="POST"
+              >
+                <button
+                  href="javascript:void()"
+                  type="button"
+                  class="btn btn-sm btn-warning btn-circle button-update"
+                  data-id="<%= bank[index]._id %>"
+                  data-namebank="<%= bank[index].nameBank %>"
+                  data-nomorrekening="<%= bank[index].nomorRekening %>"
+                  data-name="<%= bank[index].name %>"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+
+                <button type="submit" class="btn btn-sm btn-danger btn-circle">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
       </table>
     </div>
   </div>

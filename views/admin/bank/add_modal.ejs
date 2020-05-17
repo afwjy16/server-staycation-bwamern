@@ -20,7 +20,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="/admin/bank" method="post" enctype="multipart/form-data">
+      <form action="/admin/bank" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
           <div class="form-group">
             <label for="inputNameBank">Name Bank</label>
@@ -56,13 +56,14 @@
             />
           </div>
           <div class="form-group">
-            <label for="inputImageUrl">Image Url</label>
+            <label for="inputImageUrl">Image</label>
             <input
               type="file"
               class="form-control"
               id="inputImageUrl"
-              name="imageUrl"
+              name="image"
             />
+            <!-- name="image" => image itu nama yang digunakan untuk menyimpan jika menggunakan multer jika .single("image")  -->
           </div>
         </div>
         <div class="modal-footer">
