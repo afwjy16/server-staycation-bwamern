@@ -1,0 +1,64 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">
+      DataTables <%= title %>
+    </h6>
+  </div>
+  <div class="card-header">
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary float-right"
+      data-toggle="modal"
+      data-target="#add-modal"
+    >
+      <i class="fas fa-plus"></i> Add
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table table-bordered"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+      >
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Option</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for( let index = 0; index < category.length; index++ ) { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= category[index].name %></td>
+            <td>
+              <form
+                action="/admin/category/<%= category[index].id %>?_method=DELETE"
+                method="POST"
+              >
+                <button
+                  href="javascript:void()"
+                  type="button"
+                  class="btn btn-sm btn-warning btn-circle button-update"
+                  data-id="<%= category[index]._id %>"
+                  data-name="<%= category[index].name %>"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+
+                <button type="submit" class="btn btn-sm btn-danger btn-circle">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
