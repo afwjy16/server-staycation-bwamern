@@ -18,7 +18,7 @@ const storageMultiple = multer.diskStorage({
 
 const uploadMultiple = multer({
   storage: storageMultiple,
-  limits: { fileSize: 1000000 },
+  // limits: { fileSize: 1000000 },
   fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   },
@@ -52,7 +52,7 @@ function checkFileType(file, cb) {
   if (mimeType && extName) {
     return cb(null, true);
   } else {
-    cb("Error: Images Only !!!");
+    cb("Error: Images Only !");
   }
 }
 
