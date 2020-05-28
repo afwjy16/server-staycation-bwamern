@@ -23,6 +23,41 @@
             <th>Option</th>
           </tr>
         </thead>
+        <tbody>
+          <% for( let index = 0; index < booking.length; index++ ) { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td>
+              <%=
+              booking[index].bookingStartDate.toLocaleDateString().split(`,`)[0]
+              %> to <%=
+              booking[index].bookingEndDate.toLocaleDateString().split(',')[0]
+              %>
+            </td>
+            <td>
+              <%= booking[index].itemId.title %>
+            </td>
+            <td>
+              <%= booking[index].memberId.firstName %> <%=
+              booking[index].memberId.lastName %>
+            </td>
+            <td>
+              <%= booking[index].bankId.nameBank %>
+            </td>
+            <td>
+              <%= booking[index].payments.status %>
+            </td>
+            <td>
+              <a
+                href="/admin/booking/<%= booking[index]._id %> "
+                class="btn btn-sm btn-info btn-circle button-update"
+              >
+                <i class="fas fa-eye"></i>
+              </a>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
       </table>
     </div>
   </div>

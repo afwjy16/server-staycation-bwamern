@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-5">
           <form
-            action="/admin/item"
+            action="/admin/item/add/activity"
             method="POST"
             enctype="multipart/form-data"
           >
@@ -17,9 +17,9 @@
               <label for="name">Name</label>
               <input
                 type="text"
-                class="form-control"
+                class="form-control name"
                 name="name"
-                placeholder="Enter name"
+                placeholder="Enter"
                 required
               />
             </div>
@@ -27,22 +27,22 @@
               <label for="name">Type</label>
               <input
                 type="text"
-                class="form-control"
+                class="form-control type"
                 name="type"
-                placeholder="Enter type"
+                placeholder="Enter"
                 required
               />
             </div>
             <div class="form-group">
               <label for="name">Image</label>
-              <input
-                type="file"
-                class="form-control"
-                name="image"
-                multiple
-                required
-              />
+              <input type="file" class="form-control" name="image" />
             </div>
+            <input
+              type="hidden"
+              name="itemId"
+              class="form-control"
+              value="<%= itemId %>"
+            />
             <button class="btn btn-primary" type="submit">Save</button>
           </form>
         </div>
@@ -50,7 +50,7 @@
           <div class="table-responsive">
             <table
               class="table table-bordered"
-              id="datatableactivity"
+              id="dataTableActivity"
               width="100%"
               cellspacing="0"
             >
@@ -63,6 +63,47 @@
                   <th>Option</th>
                 </tr>
               </thead>
+              <tbody>
+                <% for( let index = 0; index < activity.length; index++ ) { %>
+                <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= activity[index].name %></td>
+                  <td><%= activity[index].type %></td>
+                  <td class="text-center">
+                    <img
+                      src="http://localhost:3000/<%= activity[index].imageUrl %>"
+                      alt="imageUrl"
+                      width="100px"
+                      height="60px"
+                    />
+                  </td>
+                  <td>
+                    <form
+                      action="/admin/item/delete/activity/<%= activity[index].id %>/<%= itemId %>?_method=DELETE"
+                      method="POST"
+                    >
+                      <button
+                        href="javascript:void()"
+                        type="button"
+                        class="btn btn-sm btn-warning btn-circle button-update-acivity"
+                        data-id="<%= activity[index]._id %>"
+                        data-name="<%= activity[index].name %>"
+                        data-type="<%= activity[index].type %>"
+                      >
+                        <i class="fas fa-edit"></i>
+                      </button>
+
+                      <button
+                        type="submit"
+                        class="btn btn-sm btn-danger btn-circle"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                <% } %>
+              </tbody>
             </table>
           </div>
         </div>

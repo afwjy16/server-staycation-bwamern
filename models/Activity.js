@@ -15,13 +15,12 @@ const activitySchema = new mongoose.Schema({
   },
   isPopular: {
     type: Boolean,
+    default: false,
   },
-  itemId: [
-    {
-      type: ObjectId,
-      ref: "Item",
-    },
-  ],
+  itemId: {
+    type: ObjectId,
+    ref: "Item",
+  },
 });
 
 module.exports = mongoose.model("Activity", activitySchema);
