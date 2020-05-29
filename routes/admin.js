@@ -31,8 +31,9 @@ router.get("/item/:id", adminController.showEditItem);
 router.put("/item/:id", uploadMultiple, adminController.editItem);
 router.delete("/item/delete/:id", adminController.deleteItem);
 // end item
-// start feature
+// start detail
 router.get("/item/show-detail-item/:itemId", adminController.viewDetailItem);
+// start feature
 router.post("/item/add/feature", upload, adminController.addFeature);
 router.put("/item/update/feature", upload, adminController.editFeature);
 router.delete(

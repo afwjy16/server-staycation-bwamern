@@ -15,6 +15,7 @@
         <thead>
           <tr>
             <th>No</th>
+            <th>Invoice</th>
             <th>Date</th>
             <th>Title</th>
             <th>Name Member</th>
@@ -27,6 +28,7 @@
           <% for( let index = 0; index < booking.length; index++ ) { %>
           <tr>
             <td><%= index + 1 %></td>
+            <td>#<%= booking[index].invoice %></td>
             <td>
               <%=
               booking[index].bookingStartDate.toLocaleDateString().split(`,`)[0]
@@ -42,7 +44,7 @@
               booking[index].memberId.lastName %>
             </td>
             <td>
-              <%= booking[index].bankId.nameBank %>
+              <%= booking[index].payments.bankFrom %>
             </td>
             <td>
               <%= booking[index].payments.status %>
