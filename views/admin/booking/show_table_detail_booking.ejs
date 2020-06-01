@@ -5,18 +5,12 @@
   <div class="card-body">
     <div class="row">
       <div class="col-4">
-        <img
-          src="http://localhost:3000/<%= booking.payments.proofPayment %>"
-          alt="imageUrl"
-          style="width: 100%; display: block;"
-        />
+        <img src="https://server-bwa-staycation.herokuapp.com/<%= booking.payments.proofPayment %>" alt="imageUrl"
+          style="width: 100%; display: block;" />
         <div class="row">
           <% if (booking.payments.status == "Proses") { %>
           <div class="col-6">
-            <form
-              action="/admin/booking/confirmation/<%= booking.id %>?_method=PUT"
-              method="POST"
-            >
+            <form action="/admin/booking/confirmation/<%= booking.id %>?_method=PUT" method="POST">
               <button type="submit" class="btn btn-sm btn-success btn-block">
                 <i class="fas fa-check"></i>
                 Confirmation
@@ -24,10 +18,7 @@
             </form>
           </div>
           <div class="col-6">
-            <form
-              action="/admin/booking/reject/<%= booking.id %>?_method=PUT"
-              method="POST"
-            >
+            <form action="/admin/booking/reject/<%= booking.id %>?_method=PUT" method="POST">
               <button type="submit" class="btn btn-sm btn-danger btn-block">
                 <i class="fas fa-times"></i>
                 Reject

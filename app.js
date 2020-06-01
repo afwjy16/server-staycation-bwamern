@@ -11,7 +11,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 //import mongoose
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/db_staycation", {
+mongoose.connect("mongodb://afifwijaya:bwamern123@cluster0-shard-00-00-ni7p1.mongodb.net:27017,cluster0-shard-00-01-ni7p1.mongodb.net:27017,cluster0-shard-00-02-ni7p1.mongodb.net:27017/db_staycation?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -34,13 +34,17 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 },
+    cookie: {
+      maxAge: 60000
+    },
   })
 );
 app.use(flash());
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 // static templateing sb-admin-2
